@@ -15,11 +15,13 @@ export default function Home({launches}) {
         return <Col sm={12} md={6} lg={3} style={{paddingBottom: "1vh"}}>
         <Card key = {item.mission_id+item.mission_name} bg="light">
 
-            <h5 style={{fontWeight:"bolder", fontSize:"3vh", textAlign: "center", paddingTop:"1vh"}}>{item.mission_name}</h5>
 
-          <Image src={item.links.mission_patch_small} thumbnail/>
+          <Card.Img src={item.links.mission_patch_small} variant="top"/>
+          <h5 style={{fontWeight:"bolder", fontSize:"1rem", textAlign: "center", paddingTop:"1vh"}}>{item.mission_name}</h5>
+
           <Card.Body>
-
+        <p style={{fontWeight:"bold", fontSize:"0.8rem"}}>Launch Year: {item.launch_year}</p>
+        <p style={{fontWeight:"bold", fontSize:"0.8rem"}}>Launching: {item.launch_success? "Successful": "Unsuccessful"}</p>
           </Card.Body>
           </Card>
           </Col>
