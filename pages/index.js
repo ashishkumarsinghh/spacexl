@@ -2,6 +2,7 @@ import axios from "axios"
 import { useState } from 'react';
 import {Row, Col, Container, Card, Button } from "react-bootstrap"
 import Header from "./header"
+import Head from "next/head"
 export default function Home({launches}) {
   const baseUrl = "https://api.spaceXdata.com/v3/launches?limit=100"
   const [items, setitems] = useState(launches)
@@ -27,6 +28,10 @@ export default function Home({launches}) {
   }
   return (
     <Container>
+      <Head>
+        <title>SpaceX Launch Programs</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Row key="header"><Col><Header/></Col></Row>
       <Row key="content">
         <Col sm={12} md={2} key="filters">
@@ -58,7 +63,7 @@ export default function Home({launches}) {
         <Card key = {item.mission_id+item.mission_name} bg="light">
 
 
-          <Card.Img src={item.links.mission_patch_small} variant="top"/>
+          <Card.Img src={item.links.mission_patch_small} variant="top" alt={item.mission_name}/>
           <h5 style={{fontWeight:"bolder", fontSize:"1rem", textAlign: "center", paddingTop:"1vh"}}>{item.mission_name}</h5>
 
           <Card.Body>
